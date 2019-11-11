@@ -1,0 +1,59 @@
+1.Vue的生命周期有哪些，分别有哪些作用。
+
+1、VUE生命周期是VUE实例化或者组件创建到消亡的过程。 
+2、 beforeCreate  创建前的状态，初始化事件和生命周期。
+3、创建完毕状态Init (初始化) injections (依赖注入) & reactivity (开始响应)。
+4、beforeMount 挂载前状态， 是否有元素el，是否有模板，是否渲染到了函数内，是否作为模板进行了outerHTML渲染到了页面，向虚拟DOM上挂载的过程，并且还是把我们的‘#app’生成虚拟DOM，生成完毕后并渲染到view层。
+5、mounted 挂载结束状态，渲染到真正的DOM。
+6、beforeUpdate可以拿到Vue实例化改变前的状态。
+7、Updated拿到变动完成的状态。
+8、beforeDestroy消亡前的状态。
+9、destroyed实例化或组件被摧毁消亡。
+
+2.简述V-if和v-show的作用
+
+v-if：当隐藏结构时该结构会直接从整个dom树中移除；
+v-show：当隐藏结构时是在该结构的style中加上display:none，结构依然保留。
+
+
+3.什么是跨域？什么是同源策略？项目中你是如何解决跨域的
+ 
+什么是跨域：跨域，指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源策略造成的，是浏览器对JavaScript施加的安全限制 
+什么是同源策略：同源策略是一种约定，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，则浏览器的正常功能可能都会受到影响
+项目中你是如何解决跨域的：下载一个包 cors 然后在node中进行配置 大概配置如下:
+app.use(cors({
+  origin: 'http://localhost:5080', //这个表示任意域名都可以访问
+  methods:['GET','POST'], //  设置方法 还包括其他方法
+  alloweHeaders:['Conten-Type', 'Authorization'], // 它也是一个逗号分隔的字符串，表明服务器支持的所有头信息字段
+  credentials: true    // 是否带cookie 允许服务器端发送Cookie数据,
+}));
+
+
+4.Vue循环中为什么要加上key?(作用)
+
+Vue循环中为什么要加上key：vue中列表循环需加:key="唯一标识" 唯一标识可以是item里面id index等，因为vue组件高度复用增加Key可以标识组件的唯一性，为了更好地区别各个组件
+作用：key的作用主要是为了高效的更新虚拟DOM
+
+5.MVVM是什么?你所了解的MVVM框架有哪些?
+
+MVVM是什么： Mvvm定义MVVM是Model-View-ViewModel的简写。即模型-视图-视图模型。
+【模型】指的是后端传递的数据。【视图】指的是所看到的页面。【视图模型】mvvm模式的核心，它是连接view和model的桥梁。
+你所了解的MVVM框架有哪些：
+augular.js backbone
+6.Vue双向绑定的原理、
+
+Vue双向绑定的原理：vue数据双向绑定通过‘数据劫持’ + 订阅发布模式实现
+
+7.http响应的状态码常见有哪些?其含义是什么？
+
+200 表示从客户端发来的请求在服务器端被正常处理
+400 该状态码表示请求报文中存在语法错误
+401 该状态码表示发送的请求需要有通过HTTP认证的认证信息
+404 该状态码表明服务器上无法找到请求的资源
+500 该状态码表明服务器端在执行请求时发生了错误。
+
+8.常见的http请求方法(请求动词)有哪些及其含义,最好举例说明(get localhost/user获取所有用户)
+get localhost/user/：id查询用户根据id
+post localhost/user添加用户
+put localhost/user更新用户
+delete localhost/user删除用户
