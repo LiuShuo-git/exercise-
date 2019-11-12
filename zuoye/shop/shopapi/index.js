@@ -92,6 +92,40 @@ app.get('/api/v1/index_categories', (req, res) => {
         }
     })
 })
+// 查询商品
+app.get('/api/v1/goods',(req,res)=>{
+    let id = req.query.id
+    id = id.split(',')
+    let wenhao = [ ]
+    id.forEach(v=>{
+        wenhao.push(v)
+    })
+    wenhao = wenhao.join(',')
+
+
+    
+    let sql = `SELECT * FROM shop_goods WHERE id IN (${wenhao})`
+    console.log(sql);
+    // res.json({
+    //     data:1
+    // })
+    db.query(sql,id, (err, data) => {
+        if (err) {
+            // 给前端返回 JSON 数据
+            res.json({
+                'ok': 0,
+                'error': err
+            })
+        } else {
+            // 给前端返回 JSON 数据
+            res.json({
+                'ok': 1,
+                'data': data
+            })
+        }
+    })
+    
+})
 
 // 启动服务器
 app.listen(9999, () => {
