@@ -3,7 +3,12 @@ const app = express()
 
 // 解决办法跨域
 app.use(require('cors')())
-
+// 配置body-parser 解决post传参
+const bodyParser = require('body-parser')
+app.use(bodyParser.urlencoded({ extended: true }))
+// 引入md5
+const md5 = require('md5')
+const mi = 'sddas/*/-5456456!@../*'
 // 1 引入 mysql
 const mysql = require('mysql')
 // 2 创建一个新的连接对象
@@ -93,23 +98,23 @@ app.get('/api/v1/index_categories', (req, res) => {
     })
 })
 // 查询商品
-app.get('/api/v1/goods',(req,res)=>{
+app.get('/api/v1/goods', (req, res) => {
     let id = req.query.id
     id = id.split(',')
-    let wenhao = [ ]
-    id.forEach(v=>{
+    let wenhao = []
+    id.forEach(v => {
         wenhao.push(v)
     })
     wenhao = wenhao.join(',')
 
 
-    
+    // 根据id 查询购物车商品
     let sql = `SELECT * FROM shop_goods WHERE id IN (${wenhao})`
     console.log(sql);
     // res.json({
     //     data:1
     // })
-    db.query(sql,id, (err, data) => {
+    db.query(sql, id, (err, data) => {
         if (err) {
             // 给前端返回 JSON 数据
             res.json({
@@ -124,10 +129,67 @@ app.get('/api/v1/goods',(req,res)=>{
             })
         }
     })
-    
-})
 
+})
+// 注册接口
+app.post('/api/v1/register', (req, res) => {
+    let mobile = req.body.mobile;
+    let password = req.body.password
+    let regtime = Date.parse(new Date()).toString().substr(0, 10);
+
+    let sql = `select count(*) m from shop_users where mobile = ?`
+
+    // 查询手机号是否已经添加过
+    db.query(sql, mobile, (err, data) => {
+        if (err) {
+            res.json({
+                "ok": 0,
+                "error": err
+            })
+        } else {
+            // 如果不等于0 则代表手机号已经存在 ，不能再添加
+            if (data[0].m !== 0) {
+                res.json({
+                    "ok": 0,
+                    "error": "手机号码已存在！"
+                })
+                return
+            } else {
+                let sql2 = 'insert into shop_users set ?'
+                let data = {
+                    mobile,
+                    password: password,
+                    regtime: regtime
+                }
+                db.query(sql2, data, (err, data) => {
+                    if (err) {
+                        res.json({
+                            "ok": 0,
+                            "error": "手机号格式不正确"
+                        })
+                    } else {
+                        res.json({
+                            "ok": 1
+                        })
+
+                    }
+                })
+            }
+
+
+        }
+    })
+
+
+})
 // 启动服务器
+// 登录接口
+app.post('/api/v1/login', (req, res) => {
+
+    // res.json({
+    //     // "data":0
+    // })
+})
 app.listen(9999, () => {
     console.log('成功！监听：127.0.0.1:9999!')
 })
