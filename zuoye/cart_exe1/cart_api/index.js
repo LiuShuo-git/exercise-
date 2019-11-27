@@ -161,8 +161,8 @@ app.get('/api/v1/cart', (req, res) => {
             } else {
                console.log(data2);
                for (var i = 0; i < data.length; i++) {
-               // 合并对象！
-                  Object.assign(data[i],data2[i]);
+                  // 合并对象！
+                  Object.assign(data[i], data2[i]);
                }
                console.log(data2);
                res.json({
@@ -181,8 +181,8 @@ app.put('/api/v1/status', (req, res) => {
    let count = req.body.count
    let user_id = req.body.user_id
    let goods_id = req.body.goods_id
-   console.log(user_id,goods_id,888);
-   
+   console.log(user_id, goods_id, 888);
+
    let sql = `UPDATE cart SET ischk=${ischk},count=${count} WHERE goods_id = ${goods_id} AND user_id=${user_id}`
    db.query(sql, (error, data) => {
       if (error) {
@@ -205,7 +205,7 @@ app.delete('/api/v1/cart', (req, res) => {
    let user_id = req.query.user_id
 
    let sql = `DELETE FROM cart WHERE goods_id = ? AND user_id = ?`
-   db.query(sql, [id,user_id], (error, data) => {
+   db.query(sql, [id, user_id], (error, data) => {
       if (error) {
          res.json({
             "ok": 0,

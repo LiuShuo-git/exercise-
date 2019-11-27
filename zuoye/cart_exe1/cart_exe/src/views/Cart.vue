@@ -71,7 +71,7 @@ export default {
       this.goods.forEach(v => {
         if (v.ischk === true || v.ischk === 1) {
           // window.console.log(v.price*v.count);
-          let price = v.price * v.count;
+           let price = v.price * v.count;
 
           // totalPrice ;
           total += price;
