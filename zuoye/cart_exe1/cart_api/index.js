@@ -163,6 +163,7 @@ app.get('/api/v1/cart', (req, res) => {
                for (var i = 0; i < data.length; i++) {
                   // 合并对象！
                   Object.assign(data[i], data2[i]);
+                  // data[i].push(...data2[i])
                }
                console.log(data2);
                res.json({
