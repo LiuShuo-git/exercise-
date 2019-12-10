@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+</head>
+<body>
+   <h1>聊天室</h1>
+   <button onclick="send()">发信息</button>
+   <script src="./node_modules/socket.io-client/dist/socket.io.js"></script>
+   <script>
+   let socket = io('http://127.0.0.1:8080')
+   function send(){
+      console.log(111);
+      socket.on('notify',data=>{
+         console.log(data);
+         
+      })
+      socket.emit('message','你好'+Math.random())
+   }
+   </script>
+</body>
+</html>
