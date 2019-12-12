@@ -13,14 +13,20 @@
    <button onclick="send()">发信息</button>
    <script src="./node_modules/socket.io-client/dist/socket.io.js"></script>
    <script>
-      let socket = io('http://127.0.0.1:8080')
+      let socket = io('http://127.0.0.1:8080', {
+         query: {
+            "room": "tom"
+         }
+      })
+
+
       socket.on('notify', data => {
          console.log(data);
          socket.emit('message', '你好' + Math.random())
       })
       function send() {
          console.log(111);
-         socket.emit('success','Hello-word')
+         socket.emit('success', 'Hello-word')
 
       }
    </script>
