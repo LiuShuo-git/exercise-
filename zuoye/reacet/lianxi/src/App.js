@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import Life from './Life'
+import TotalData from './TotalData'
+import TotalInput from './ToataInput'
 
 class App extends Component {
   // 构造器
@@ -10,19 +13,49 @@ class App extends Component {
     }
   }
   valueChanged(e) {
-    console.log(e);
+    // console.log(e.target.value);
+    this.setState({
+      value: e.target.value
+    })
+
+  }
+  add() {
+    console.log(this.state);
+    // let newMessage = this.state.message
+    // newMessage.push(this.state.value)
+    // console.log(newMessage);
+    // this.setState({
+    //   value: '',
+    //   message: newMessage
+    // })
+  }
+  del(k) {
+    console.log(k);
+
+
+
+    let map = this.props.message.filter((item, index) => {
+      return k != index
+    })
+    // console.log(map);
+    // this.state.message = map
+    this.setState({
+      value: '',
+      message: map
+    })
+    console.log(this.state);
+
 
   }
   render() {
     let view = (
       <div>
-        <input onChange={this.valueChanged.bind(this)} type='text' value={this.state.value} />
-        <button>添加</button>
-        <ul>
-          <li>
-            <button>删除</button>
-          </li>
-        </ul>
+        <TotalInput valueChanged={this.valueChanged} add={this.add} value={this.state.value}  />
+
+        < TotalData message={this.state.message} del={this.del} />
+
+        <hr />
+        <Life />
       </div>
 
     )
