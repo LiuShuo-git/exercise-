@@ -1,0 +1,58 @@
+简述package.json的作用和配置说明
+定义了这个项目所需要的各种模块，以及项目的配置信息（比如名称、版本、许可证等元数据）。npm install命令根据这个配置文件，自动下载所需的模块，也就是配置项目所需的运行和开发环境。
+vue-cli 工程常用的 npm 命令有哪些？
+
+构建的 vue-cli 工程都到了哪些技术，它们的作用分别是什么？
+vue.js：vue-cli工程的核心，主要特点是 双向数据绑定 和 组件系统。
+
+vue-router：vue官方推荐使用的路由框架。
+
+vuex：专为 Vue.js 应用项目开发的状态管理器，主要用于维护vue组件间共用的一些 变量 和 方法。
+
+axios（ 或者 fetch 、ajax ）：用于发起 GET 、或 POST 等 http请求，基于 Promise 设计。
+
+vuex等：一个专为vue设计的移动端UI组件库。创建一个emit.js文件，用于vue事件机制的管理。
+
+webpack：模块加载和vue-cli工程打包器
+
+
+
+
+
+1.  npm install：下载 node_modules 资源包的命令
+
+2. npm run dev： 启动 vue-cli 开发环境的 npm命令
+
+3.  npm run build： vue-cli 生成 生产环境部署资源 的 npm命令
+
+4. npm run build--report： 用于查看 vue-cli 生产环境部署资源文件大小的 npm命令
+5.rimraf node_modules 删除  node_modules 资源包的命令
+
+
+谈谈你对vue理解，与其他框架(react或angular)有何异同点。
+Vue特性
+    模板和渲染函数的弹性选择
+    简单的语法和项目配置
+    更快的渲染速度和更小的体积
+    生命周期
+
+
+简述v-if和v-show，及其优先级
+v-if是真正的条件渲染，他会确保在切换过程中条件块内的时间和子组件被销毁和重建（组件被重建将会调用created）
+v-show不论如何，都会被渲染在DOM中，当条件为真值时，将会修改条件的css样式
+v-if有更高的切换开销，v-show有更高的初始渲染开销
+
+
+
+vue父子组件，兄弟组件数据传递
+1、父组件可以使用 props 把数据传给子组件。
+2、子组件可以使用 $emit 触发父组件的自定义事件。
+3.兄弟组件之间数据的传递如果不使用vuex的话，那么可以使用bus来传值，所以在这里在需要互相通信的兄弟组件之间引入了Bus（一个js）;
+
+你的组件是如何实现复用的？
+
+vue中<keep-alive>做何用？
+keep-alive是Vue提供的一个抽象组件，用来对组件进行缓存，从而节省性能，由于是一个抽象组件，所以在v页面渲染完毕后不会被渲染成一个DOM元素
+
+什么是$nextTick？何用？
+vue响应式的改变一个值以后，此时的dom并不会立即更新，如果需要在数据改变以后立即通过dom做一些操作，可以使用$nextTick获得更新后的dom。
