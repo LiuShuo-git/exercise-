@@ -1,0 +1,57 @@
+a
+d
+a
+C
+A 
+B
+C
+C
+D
+D
+C
+C
+B
+B
+B 
+A
+B
+C
+A
+C
+1.JavaScript的typeof返回那些数据类型？
+number string Boole null undefined
+2.vue中如何实现路由传参？
+ 1、 this.$router.push进行编程式路由跳转
+
+    2、 router-link 进行页面按钮式路由跳转
+
+    3、 this.$route.params获取路由传递参数
+
+    4、this.$route.query获取路由传递参数
+
+    5、 params 和 query 都是传递参数的，params不会在url上面出现，并且params参数是路由的一部分，是一定要存在的 query则是我们通常看到的url后面的跟在？后面的显示参数
+
+
+
+3请列举vue的指令和语法.(至少5个)
+1、v-if：根据表达式的值的真假条件渲染元素。在切换时元素及它的数据绑定 / 组件被销毁并重建。
+2、v-show：根据表达式之真假值，切换元素的 display CSS 属性。
+3、v-for：循环指令，基于一个数组或者对象渲染一个列表，vue 2.0以上必须需配合 key值 使用。
+4、v-bind：动态地绑定一个或多个特性，或一个组件 prop 到表达式。
+5、v-on：用于监听指定元素的DOM事件，比如点击事件。绑定事件监听器。
+6、v-model：实现表单输入和应用状态之间的双向绑定
+
+4请列举字符串 和数组的方法.(至少各个3个)
+数组.push() 添加  forEach 循环数组 ...展开数组 数组.toString() 数组转字符串
+字符串.trim() 去除空格 
+字符串.length 返回字符串长度
+字符串.indexof() 返回首次出现的下标
+
+
+
+5.跨域是什么 什么是同源策略?如何解决跨域?
+跨域：指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源策略造成的，是浏览器对javascript施加的安全限制。
+
+同源策略，它是一种安全策略。现在所有支持JavaScript 的浏览器都会使用这个策略。所谓同源是指，域名，协议，端口相同。
+
+解决：引入cors，设置header头
