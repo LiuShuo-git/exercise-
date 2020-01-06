@@ -168,8 +168,6 @@ app.get('/api/v1/cart', (req, res) => {
 
                   result1.forEach((v, k) => {
                      Object.assign(result1[k], result2[k]);
-
-
                   })
                   res.json({
                      data: result1
