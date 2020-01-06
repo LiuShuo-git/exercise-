@@ -52,7 +52,7 @@ class goods extends Component {
    }
 
    componentDidMount() {
-      
+
       this.getGoods()
 
    }
@@ -239,7 +239,7 @@ class goods extends Component {
                   </Form.Item>
                   <Form.Item>
                      {getFieldDecorator('product_num', {
-                        rules: [{ required: true, message: '商品数量不能为空' }, 
+                        rules: [{ required: true, message: '商品数量不能为空' },
                         { pattern: /^[1-9]\d*$/, message: '商品数量必须为数字' }],
                      })(
                         <Input

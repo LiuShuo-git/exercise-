@@ -4,6 +4,9 @@ const app = express()
 const db = require('./mysql/db')
 const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+const cors = require('cors')
+app.use(cors())
 
 // 获取轮播图
 app.get('/api/v1/swipe', (req, res) => {
@@ -158,7 +161,7 @@ app.get('/api/v1/cart', (req, res) => {
                ids.push(v.goods_id)
             })
             console.log(ids);
-            db.query(`SELECT * FROM shop_goods WHERE id in (${ids.toString()})`, (error, result2) => {
+            db.query(`SELECT goods_name,price,image FROM shop_goods WHERE id in (${ids.toString()})`, (error, result2) => {
                if (error) {
                   res.json({
                      "ok": 0,
@@ -170,6 +173,7 @@ app.get('/api/v1/cart', (req, res) => {
                      Object.assign(result1[k], result2[k]);
                   })
                   res.json({
+                     "ok": 1,
                      data: result1
                   })
                }
@@ -180,6 +184,42 @@ app.get('/api/v1/cart', (req, res) => {
 
       }
    })
+})
+// 修改状态
+app.put('/api/v1/status', (req, res) => {
+   console.log(req.body);
+   db.query(`UPDATE cart SET ? WHERE id = ? `, [req.body, req.body.id], (error, result) => {
+      if (error) {
+         res.json({
+            "ok": 0,
+            error: error
+
+         })
+      } else {
+         res.json({
+            "ok": 1
+         })
+      }
+   })
+
+})
+// 删除
+app.delete('/api/v1/cart', (req, res) => {
+   console.log(req.query);
+   let id = req.query.id;
+   db.query('DELETE FROM  cart WHERE id =?', id, (error, result) => {
+      if (error) {
+         res.json({
+            "ok": 0,
+            "error": error
+         })
+      } else {
+         res.json({
+            "ok": 1
+         })
+      }
+   })
+
 })
 app.listen(9999, () => console.log('Example app listening on port 9999!'))
 
