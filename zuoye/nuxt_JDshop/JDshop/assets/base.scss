@@ -1,0 +1,62 @@
+body,div,p,ul,li,h1,h2,h3,h4,h5,h6,form,input {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+ }
+ body {
+   font: 12px/1.5 Microsoft YaHei,Heiti SC,tahoma,arial,Hiragino Sans GB,"\5B8B\4F53",sans-serif;
+   color: #666;
+   background-color: #f4f4f4;
+ }
+ ul {
+   list-style: none;
+ }
+ a {
+   text-decoration: none;
+   color: #333;
+   &:hover {
+     color: red;
+   }
+ }
+ img, svg {
+   border: 0;
+   vertical-align: middle;
+ }
+ input {
+   outline: none;
+ }
+//  清除浮动
+.clearfix::after{
+content:'\20';
+display: block;
+height: 0;
+clear: both;
+
+}
+ .container {
+   width: 1190px;
+   margin: 0 auto;
+ }
+
+ .row:after {
+   content: "";
+   display: block;
+   clear: both;
+ }
+
+ @for $i from 1 through 12 {
+   .col-#{$i} {
+     float: left;
+     width: (100%/12)*$i;
+   }
+ }
+
+ .gutter {
+   [class^=col-] {
+     padding: 0 5px;
+   }
+   &.row {
+     margin: 0 -5px;
+   }
+ }
+ 
