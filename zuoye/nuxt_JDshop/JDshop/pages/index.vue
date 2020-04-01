@@ -85,12 +85,7 @@
         </div>
         <div class="col-8">
           <!-- 轮播图 -->
-          <swipe :data="this.seckillSwipe" :width="200" :count="2">
-            <!-- 插槽 -->
-            <template v-slot:defau lt="row">
-              <img  :src="row.data.path" alt />
-            </template>
-          </swipe>
+          <newSwipe :data="this.seckillSwipe"></newSwipe>
         </div>
         <div class="col-2">333</div>
       </div>
@@ -111,6 +106,8 @@ import swipe from "~/components/swipe.vue";
 import rowSwipe from "~/components/rowSwipe.vue";
 // 秒杀
 import seckill from "~/components/seckill.vue";
+// 新轮播图
+import newSwipe from "~/components/newSwipe.vue";
 export default {
   components: {
     tabar,
@@ -118,7 +115,8 @@ export default {
     sidebar,
     swipe,
     rowSwipe,
-    seckill
+    seckill,
+    newSwipe
   },
   data() {
     return {

@@ -126,7 +126,7 @@ export default {
     start() {
       //  this.swLeft = -this.width*this.count;
       this.inter = setInterval(() => {
-        console.log(this.swLeft);
+        // console.log(this.swLeft);
 
         if (
           this.swLeft ==
