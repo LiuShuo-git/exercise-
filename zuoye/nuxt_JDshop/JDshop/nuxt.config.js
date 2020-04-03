@@ -24,9 +24,9 @@ export default {
   */
   css: [
     '~assets/base.scss',
-   
+
   ],
- 
+
   /*
   ** Plugins to load before mounting the App
   */
@@ -49,7 +49,7 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-
+    baseURL: 'http://rap2.taobao.org:38080/app/mock/248699'
   },
   /*
   ** Build configuration
