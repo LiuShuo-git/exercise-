@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>双向绑定测试器</h1>
+   <input type="text" name="" id="input">
+   <span id="inputValue"></span>
+</body>
+<script>
+   let _obj = {};
+   Object.defineProperty(_obj, 'value', {
+      get: function (value) {
+
+
+      },
+      set: function (value) {
+         document.querySelector('#input').value = value
+         document.querySelector('#inputValue').innerHTML = value
+      }
+   })
+   document.querySelector('#input').addEventListener('keyup', function (e) {
+      // console.log(e.target.value);
+      _obj.value = e.target.value
+
+
+
+   })
+
+   // _obj.value='jj'
+   console.log(_obj.value);
+
+
+
+
+</script>
+
+</html>
