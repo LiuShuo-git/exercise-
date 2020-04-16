@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+</head>
+
+<body>
+   <div class="box">sdas</div>
+   <input type="text" class="input">
+   <button class="btn">change</button>
+   <img src="" alt="">
+   <select name="select" id="">
+      <option
+         value="https://upload-images.jianshu.io/upload_images/17056223-44d0c63fbe197961.png?imageMogr2/auto-orient/strip|imageView2/2/w/418">
+         图片1</option>
+      <option selected
+         value="https://imgcps.jd.com/ling/100010617316/54K55b-D/5LiL5Y2I6Iy257K-6YCJ/p-5bd8253082acdd181d02f9e3/fe0a03ec.jpg">
+         图片2</option>
+      <option
+         value="https://upload-images.jianshu.io/upload_images/17056223-44d0c63fbe197961.png?imageMogr2/auto-orient/strip|imageView2/2/w/418">
+         图片3</option>
+      <option
+         value="https://imgcps.jd.com/ling/100010617316/54K55b-D/5LiL5Y2I6Iy257K-6YCJ/p-5bd8253082acdd181d02f9e3/fe0a03ec.jpg">
+         图片4</option>
+   </select>
+
+   <script>
+      let box = document.querySelector('.box')
+      let input = document.querySelector('.input')
+      let btn = document.querySelector('.btn')
+      let img = document.querySelector('img');
+      let sel = document.querySelector('select')
+
+      // box.addEventListener('onchange',)
+      btn.onclick = function () {
+         img.src = 'https://upload-images.jianshu.io/upload_images/17056223-44d0c63fbe197961.png?imageMogr2/auto-orient/strip|imageView2/2/w/418'
+      }
+      input.onchange = function () {
+         console.log('触发change事件');
+
+      }
+      img.onchange = function () {
+         img.src = 'https://imgcps.jd.com/ling/100010617316/54K55b-D/5LiL5Y2I6Iy257K-6YCJ/p-5bd8253082acdd181d02f9e3/fe0a03ec.jpg'
+
+      }
+      sel.onchange = function () {
+         console.log(this.value);
+         img.src = this.value
+
+
+      }
+
+   </script>
+</body>
+
+</html>

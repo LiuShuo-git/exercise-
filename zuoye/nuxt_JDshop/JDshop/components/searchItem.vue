@@ -125,9 +125,9 @@ export default {
     this.getBrand();
   },
   methods: {
-   //   多选
+    //   多选
     selectBtn() {
-       this.isMore=true;
+      this.isMore = true;
       console.log(this.data);
       (this.isSelect = true), (this.brandList = this.data.brand);
     },
@@ -141,7 +141,7 @@ export default {
     //  取消
     call() {
       //  关闭按钮
-      this.isMore=false;
+      this.isMore = false;
       this.isSelect = false;
       // 清空数组
       this.selectList = [];
